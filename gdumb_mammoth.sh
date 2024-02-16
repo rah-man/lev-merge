@@ -1,0 +1,4 @@
+python main.py --model gdumb_mod --dataset mod-cub200 --lr 0.01 --optim_wd 0.000001 --optim_mom 0 --n_epochs 100 --batch_size 10 --backbone_type whole --ntask 10 --buffer_size 1000 --nowand 1 > ../output/gdumb_cub200_10_1000_1.txt
+python main.py --model gdumb_mod --dataset mod-cub200 --lr 0.01 --optim_wd 0.000001 --optim_mom 0 --n_epochs 100 --batch_size 10 --backbone_type whole --ntask 10 --buffer_size 2000 --nowand 1 > ../output/gdumb_cub200_10_2000_1.txt
+python main.py --model gdumb_mod --dataset mod-cub200 --lr 0.01 --optim_wd 0.000001 --optim_mom 0 --n_epochs 100 --batch_size 10 --backbone_type whole --ntask 20 --buffer_size 1000 --nowand 1 > ../output/gdumb_cub200_20_1000_1.txt
+python main.py --model gdumb_mod --dataset mod-cub200 --lr 0.01 --optim_wd 0.000001 --optim_mom 0 --n_epochs 100 --batch_size 10 --backbone_type whole --ntask 20 --buffer_size 2000 --nowand 1 > ../output/gdumb_cub200_20_2000_1.txt

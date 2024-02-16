@@ -1,11 +1,13 @@
+Baseline framework preparation:
+
 Finetune avalanche - DONE
 Joint training avalanche - DONE
-LwF mammoth
-EWC mammoth
+LwF mammoth - DONE
+EWC mammoth - DONE
 iCaRL facil
-Gdumb mammoth
+Gdumb mammoth - DONE
 BiC facil
-DER++ mammoth
+DER++ mammoth - DONE
 ProgressNet avalanche - DONE
 VE Average Replay
 VE Majority Replay
@@ -46,3 +48,49 @@ from pnn pickle output:
     1. take the dictionary from the last element in the list
         - FAA: Top1_Acc_Stream/eval_phase/test_stream/Task000
         - FF: StreamForgetting/eval_phase/test_stream
+
+==========================
+To run this, copy the content of the following pythong scripts and paste/replace in the old directory.
+
+Mammoth:
+backbone/SimpleMLP.py
+datasets/base.py
+datasets/mod_cifar100.py
+datasets/mod_cub.py
+models/derpp_mod.py
+models/ewc_mod.py
+models/gdumb_mod.py
+models/lwf_mod.py
+utils/args.py
+utils/conf.py
+utils/main.py
+utils/training_mod.py
+
+for mammoth, the shell scripts should be put inside the "utils/" directory.
+
+lwf_mammoth.sh contains 5 10 tasks CUB and 5 20 tasks CUB.
+the output path in the shell script still needs to be adjusted.
+from the text file output:
+    - FAA: Final_acc
+    - FF: Forgetting
+
+ewc_mammoth.sh contains 1 10 tasks CUB and 1 20 tasks CUB.
+need to add 4 more each to get 5 for average.
+like lwf, the output path still needs to be adjusted.
+from the text file output:
+    - FAA: Final_acc
+    - FF: Forgetting
+
+gdumb_mammoth.sh contains 1 10 tasks CUB (1000 and 2000 buffer) and 1 20 tasks CUB (1000 and 2000 buffer).
+in total, there will be 20 outputs.
+like lwf, the output path still needs to be adjusted.
+from the text file output:
+    - FAA: Final_acc
+    - FF: no forgetting as Gdumb behaves differently
+
+derpp_mammoth.sh contains 1 10 tasks CUB (1000 and 2000 buffer) and 1 20 tasks CUB (1000 and 2000 buffer).
+like gdumb, in total, there will be 20 outputs.
+like lwf, the output path still needs to be adjusted.
+from the text file output:
+    - FAA: Final_acc
+    - FF: Forgetting    
