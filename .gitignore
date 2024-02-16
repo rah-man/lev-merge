@@ -1,0 +1,10 @@
+*.pt
+*.pth
+*.pkl
+*.csv
+
+*.gz
+*.tar
+*.zip
+
+__pycache__/

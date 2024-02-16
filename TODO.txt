@@ -1,0 +1,48 @@
+Finetune avalanche - DONE
+Joint training avalanche - DONE
+LwF mammoth
+EWC mammoth
+iCaRL facil
+Gdumb mammoth
+BiC facil
+DER++ mammoth
+ProgressNet avalanche - DONE
+VE Average Replay
+VE Majority Replay
+VE Hard Replay
+Foster
+
+==========================
+
+Avalanche 0.2.1 (for fine tune, joint training, progressnet)
+pip install avalanche-lib==0.2.1
+
+FACIL (for iCaRL, BiC)
+https://github.com/mmasana/FACIL
+
+Mammoth (for LwF, EWC, Gdumb, DER++)
+https://github.com/aimagelab/mammoth
+
+==========================
+
+joint_avalanche.sh already contains 5 calling to run CUB 5 times. still need to create/adjust the pickle location.
+joint_avalanche.py also needs to be adjusted where you put cifar100 and cub dataset. the same with fine tune and progressnet.
+I can't make pure shell/bash scripting so I just call python 5 times.
+from joint training pickle output:
+    1. take the dictionary from the only element in the list
+        - FAA: Top1_Acc_Stream/eval_phase/test_stream/Task000 
+        - FF: no forgetting for joint training
+
+ftune_avalanche.sh contains 1 10 tasks CUB and 1 20 tasks CUB.
+I run all experiments 5 times each to get the average. so, they're similar to joint_avalanche.sh.
+from fine tuning pickle output:
+    1. take the dictionary from the last element in the list
+        - FAA: Top1_Acc_Stream/eval_phase/test_stream/Task000
+        - FF: StreamForgetting/eval_phase/test_stream
+
+pnn_avalanche.sh contains 1 10 tasks CUB and 1 20 tasks CUB.
+I run all experiments 5 times each to get the average. so, they're similar to joint_avalanche.sh.
+from pnn pickle output:
+    1. take the dictionary from the last element in the list
+        - FAA: Top1_Acc_Stream/eval_phase/test_stream/Task000
+        - FF: StreamForgetting/eval_phase/test_stream
