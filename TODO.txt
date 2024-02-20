@@ -4,9 +4,9 @@ Finetune avalanche - DONE
 Joint training avalanche - DONE
 LwF mammoth - DONE
 EWC mammoth - DONE
-iCaRL facil
+iCaRL facil - DONE and RUN
 Gdumb mammoth - DONE
-BiC facil
+BiC facil   - DONE and RUN
 DER++ mammoth - DONE
 ProgressNet avalanche - DONE
 VE Average Replay
