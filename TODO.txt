@@ -1,26 +1,17 @@
 Baseline framework preparation:
 
-Finetune avalanche - DONE
-Joint training avalanche - DONE
-LwF mammoth - DONE
-EWC mammoth - DONE
-iCaRL facil - DONE and RUN
-Gdumb mammoth - DONE
-BiC facil   - DONE and RUN
-DER++ mammoth - DONE
-ProgressNet avalanche - DONE
-VE Average Replay
-VE Majority Replay
-VE Hard Replay
-Foster
+Finetune avalanche
+Joint training avalanche
+LwF mammoth
+EWC mammoth
+Gdumb mammoth
+DER++ mammoth
+ProgressNet avalanche
 
 ==========================
 
 Avalanche 0.2.1 (for fine tune, joint training, progressnet)
 pip install avalanche-lib==0.2.1
-
-FACIL (for iCaRL, BiC)
-https://github.com/mmasana/FACIL
 
 Mammoth (for LwF, EWC, Gdumb, DER++)
 https://github.com/aimagelab/mammoth
