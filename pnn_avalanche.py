@@ -28,12 +28,15 @@ lr = float(args.learning_rate)
 wd = float(args.weight_decay)
 mom = float(args.momentum)
 pickle_file = args.pickle
-batch = 64 if d == 0 else 10    # cub only has 30 samples per class
 
-train_path = ["../cifar100_coarse_train_embedding_nn.pt", "../ds_cub_train.pt"]
-test_path = ["../cifar100_coarse_test_embedding_nn.pt", "../ds_cub_test.pt"]
+train_path = ["../cifar100_coarse_train_embedding_nn.pt", "../ds_cub_train.pt", "/data/shared/inat_train.pt"]
+test_path = ["../cifar100_coarse_test_embedding_nn.pt", "../ds_cub_test.pt", "/data/shared/inat_train.pt"]
 train_embedding_path = train_path[d]
 test_embedding_path = test_path[d]
+
+classes = [100, 200, 1011]
+bsize = [64, 10, 256]
+batch = bsize[d]
 
 train_set = torch.load(open(train_embedding_path, "rb"))
 test_set = torch.load(open(test_embedding_path, "rb"))
@@ -50,15 +53,23 @@ if d == 0:
     for image, coarse_label, label in test_set["data"]:
         test_x.append(image)
         test_y.append(label)        
-elif d == 1:
-    # cub has 2 elements: x, y
+else:
+    # cub and inaturalist have 2 elements: x, y
     for image, label in train_set["data"]:
         train_x.append(image)
         train_y.append(label)
         
     for image, label in test_set["data"]:
         test_x.append(image)
-        test_y.append(label)    
+        test_y.append(label)
+        
+if d != 2:
+    per_exp = None
+elif d == 2:
+    if n_task == 10:
+        per_exp = {0: 102}
+    elif n_task == 20:
+        per_exp = {0: 61}            
         
 train_x = torch.stack(train_x)
 train_y = torch.tensor(train_y)
@@ -71,7 +82,7 @@ test_dataset = AvalancheTensorDataset(test_x, test_y)
 
 scenario = nc_benchmark(
     train_dataset, test_dataset, n_experiences=n_task, shuffle=True,
-    task_labels=False
+    task_labels=False, per_exp_classes=per_exp
 )
 
 train_stream = scenario.train_stream

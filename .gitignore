@@ -2,9 +2,11 @@
 *.pth
 *.pkl
 *.csv
+*.json
 
 *.gz
 *.tar
 *.zip
 
+data_processing.ipynb
 __pycache__/

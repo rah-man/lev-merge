@@ -24,13 +24,15 @@ lr = float(args.learning_rate)
 wd = float(args.weight_decay)
 mom = float(args.momentum)
 pickle_file = args.pickle
-batch = 64 if d == 0 else 10    # cub only has 30 samples per class
-num_classes = 100 if d == 0 else 200
 
-train_path = ["../cifar100_coarse_train_embedding_nn.pt", "../ds_cub_train.pt"]
-test_path = ["../cifar100_coarse_test_embedding_nn.pt", "../ds_cub_test.pt"]
+classes = [100, 200, 1011]
+bsize = [64, 10, 256]
+train_path = ["../cifar100_coarse_train_embedding_nn.pt", "../ds_cub_train.pt", "/data/shared/inat_train.pt"]
+test_path = ["../cifar100_coarse_test_embedding_nn.pt", "../ds_cub_test.pt", "/data/shared/inat_test.pt"]
 train_embedding_path = train_path[d]
 test_embedding_path = test_path[d]
+num_classes = classes[d]
+batch = bsize[d]
 
 train_set = torch.load(open(train_embedding_path, "rb"))
 test_set = torch.load(open(test_embedding_path, "rb"))
@@ -47,8 +49,8 @@ if d == 0:
     for image, coarse_label, label in test_set["data"]:
         test_x.append(image)
         test_y.append(label)        
-elif d == 1:
-    # cub has 2 elements: x, y
+else:
+    # cub and inaturalist have 2 elements: x, y
     for image, label in train_set["data"]:
         train_x.append(image)
         train_y.append(label)
