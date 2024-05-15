@@ -16,6 +16,8 @@ pip install avalanche-lib==0.2.1
 Mammoth (for LwF, EWC, Gdumb, DER++)
 https://github.com/aimagelab/mammoth
 
+Python environment as in packages.txt
+
 ==========================
 
 joint_avalanche.sh already contains 5 calling to run CUB 5 times. still need to create/adjust the pickle location.
@@ -41,7 +43,7 @@ from pnn pickle output:
         - FF: StreamForgetting/eval_phase/test_stream
 
 ==========================
-To run this, copy the content of the following pythong scripts and paste/replace in the old directory.
+To run this, copy the content of the following python scripts and paste/replace in the old directory.
 
 Mammoth:
 backbone/SimpleMLP.py
